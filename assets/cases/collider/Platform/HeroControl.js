@@ -1,3 +1,4 @@
+var engine = require("../Lib/MatchvsEngine");
 
 cc.Class({
     extends: cc.Component,
@@ -11,6 +12,14 @@ cc.Class({
         jumpSpeed: 300
     },
 
+    start: function() {
+        this.pingTimer = setInterval(function () {
+            engine.prototype.sendEventEx(0, JSON.stringify({
+                type: "ping",
+                data: new Date().getTime()
+            }));
+        }, 1000);
+    },
     // use this for initialization
     onLoad: function () {
         //add keyboard input listener to call turnLeft and turnRight

@@ -1,3 +1,6 @@
+var msg = require("Lib/MatvhvsMessage");
+var response = require("../Lib/MatchvsDemoResponse");
+
 cc.Class({
     extends: cc.Component,
 
@@ -18,5 +21,12 @@ cc.Class({
         }
         var follow = cc.follow(this.target, cc.rect(0,0, 2000,2000));
         this.node.runAction(follow);
+
+        response.prototype.init(this);
+        this.node.on(msg.MATCHVS_GAME_SERVER_NOTIFY, this.onEvent, this);
+    },
+
+    onEvent: function (event) {
+        console.warn(event);
     }
 });

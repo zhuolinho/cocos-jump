@@ -5,7 +5,6 @@ var msg = require("../Lib/MatvhvsMessage");
 var engine = require("../Lib/MatchvsEngine");
 var response = require("../Lib/MatchvsDemoResponse");
 
-
 cc.Class({
     extends: cc.Component,
 
@@ -24,10 +23,8 @@ cc.Class({
         ownereID: 0,
     },
 
-
     onLoad: function () {
         // cc.director.setDisplayStats(false);
-        cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
         //Matchvs事件监听
         this.mvsBind(this);
         this.node.removeChild();
@@ -35,21 +32,8 @@ cc.Class({
         // this.loadAvatarImage(Const.avatarUrl);
         // this.initProfileData();
         // this.getRoomList();
-        this.quickJoinBtnHandler()
+        this.quickJoinBtnHandler();
     },
-
-    onKeyDown: function (event) {
-        switch (event.keyCode) {
-            case 1005:
-                console.log('开始随机匹配');
-                this.quickJoinBtnHandler();
-                break;
-            case 6:
-                this.backBtnHandler();
-                break;
-        }
-    },
-
 
     mvsBind: function (self) {
         response.prototype.init(self);
