@@ -10,9 +10,9 @@ cc.Class({
         //不展示FSP信息
         // cc.director.setDisplayStats(false);
         // 监听键盘
-        cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN,this.onKeyDown,this);
         LocalStore_Clear();
         this.initEvent(this);
+        this.init()
     },
 
     initEvent:function(self) {
@@ -87,23 +87,7 @@ cc.Class({
     },
 
     showPromptOfError:function(str,isShow) {
-        let promptNode = cc.find('Canvas/prompt');
-        if (isShow) {
-            let promptTxt = promptNode.getChildByName('label').getComponent(cc.Label);
-            promptTxt.string = str;
-            promptNode.active = true;
-        } else {
-            promptNode.active = false;
-        }
-    },
-
-    onKeyDown:function(event) {
-        console.warn('keyCode',event.keyCode);
-        switch (event.keyCode) {
-            case 1005:
-                this.play();
-                break;
-        }
+        console.warn(str, isShow);
     },
 
     removeEvent:function () {
