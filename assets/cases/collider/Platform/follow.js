@@ -23,7 +23,7 @@ cc.Class({
         this.node.runAction(follow);
 
         response.prototype.init(this);
-        this.node.on(msg.MATCHVS_GAME_SERVER_NOTIFY, this.onEvent, this);
+        this.node.on(msg.MATCHVS_SEND_EVENT_NOTIFY, this.onEvent, this);
     },
 
     onEvent: function (event) {
