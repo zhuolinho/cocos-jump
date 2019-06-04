@@ -2,6 +2,7 @@ var msg = require("Lib/MatvhvsMessage");
 var response = require("../Lib/MatchvsDemoResponse");
 var Const = require('Const/Const');
 var engine = require("Lib/MatchvsEngine");
+var GameData = require('Global/GameData');
 
 cc.Class({
     extends: cc.Component,
@@ -24,9 +25,13 @@ cc.Class({
         var follow = cc.follow(this.target, cc.rect(0, 0, 2000, 2000));
         this.node.runAction(follow);
 
+        this.initEvent();
+        if (GameData.isOwner) this.setFrameRate();
+    },
+
+    initEvent() {
         response.prototype.init(this);
-        this.node.on(msg.MATCHVS_SEND_EVENT_NOTIFY, this.onEvent, this);
-        this.setFrameRate();
+        this.node.on(msg.MATCHVS_JOIN_ROOM_NOTIFY, this.onEvent, this);
     },
 
     setFrameRate() {

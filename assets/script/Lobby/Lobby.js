@@ -62,10 +62,10 @@ cc.Class({
     isOwner: function (ownerID) {
         if (ownerID === Const.userID) {
             GameData.isOwner = true;
-            this.showSomeRoomViewBtn();
+            // this.showSomeRoomViewBtn();
         } else {
             GameData.isOwner = false;
-            this.hideSomeRoomViewBtn();
+            // this.hideSomeRoomViewBtn();
         }
     },
 
@@ -105,6 +105,7 @@ cc.Class({
                 break;
             case msg.MATCHVS_JOIN_ROOM_RSP:
                 if (!GameData.GameMode) {
+                    this.isOwner(eventData.userInfoList.owner);
                     this.shouldStartGame();
                 } else {
                     var label = cc.find('Canvas/stage2/boxRoom/title').getComponent(cc.Label);
@@ -402,7 +403,7 @@ cc.Class({
     quickJoinBtnHandler: function () {
         GameData.GameMode = false;
         this.isshowUserProfileLayer(false);
-        var maxPlayer = 8;
+        var maxPlayer = 2;
         var userProfile = Const.userName;
         var result = engine.prototype.joinRandomRoom(maxPlayer, userProfile);
         if (result !== 0) {
