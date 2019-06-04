@@ -22,7 +22,7 @@ module.exports = {
     // client room event
     GAME_START_EVENT: 'game_start_event',
 
-    FPS:20,
+    FPS:30,
     SPEED_UP:2,
     SPEED:3,
     SPEED_DISSIPATION_SCORE : 3,
